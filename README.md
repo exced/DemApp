@@ -5,10 +5,49 @@ The goal is to build an user-friendly app to let patient do clock drawing test.
 
 Each patient is managed by a nurse who can see his data in order to react fastly.
 
-## Install Dem App
+# Install on Debian and Ubuntu based Linux distribution
 
-### Directly Set the .apk
+## Install NodeJS
 
-### Install openCV
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+$ sudo apt-get install -y build-essential
 
-#### Install NPM
+Check the install :
+$ node -v
+
+## Install MongoDB
+
+$ sudo apt-get install mongodb-server mongodb-clients
+
+Check the install :
+$ mongo
+
+## Install NPM (Node Package Manager)
+
+$ sudo apt-get install npm
+
+## Install Server Side
+
+$ cd DemApp/Server
+$ sudo npm install
+
+Run the server :
+$ node server.js
+
+
+## Install Client
+
+### Install Cordova
+
+$ sudo npm install -g cordova
+
+### Install Ionic
+
+$ sudo npm install -g ionic@beta
+
+Run the client :
+$ ionic serve --lab
+
+## Directly Set the .apk
+
