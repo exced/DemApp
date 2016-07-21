@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-navbar>
+		<button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Draw</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+	<ion-card >
+
+		<ion-card-header>
+			<div text-center>
+				Score : {{draw.score}} <br/>
+				createdAt : {{draw.createdAt}}
+			</div>
+		</ion-card-header>
+
+		<ion-card-content class="outer-content">
+		
+		<img [src]="image"/>	
+
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>
+

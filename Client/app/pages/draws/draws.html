@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{user.name}}'s Draws</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content draw-list">
+
+  <ion-card *ngFor="let draw of draws" class="draw">
+
+    <button ion-item (click)="gotoDrawDetail(draw)">
+      <div item-left>
+          {{draw.createdAt}}
+        </div>
+        <div item-right>
+          {{draw.score}}
+        </div>
+      </button>
+
+    </ion-card>
+
+  </ion-content>
+
+

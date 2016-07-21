@@ -1,0 +1,35 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Dem</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-list>
+		<ion-item>
+			<ion-label floating>Username</ion-label>
+			<ion-input [(ngModel)] = "usercreds.name" type="text"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.name" danger padding-left>
+			Name is required
+		</p>
+		<ion-item>
+			<ion-label floating>Password</ion-label>
+			<ion-input [(ngModel)] = "usercreds.password" type="password"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.password" danger padding-left>
+			Password is required
+		</p>
+
+		<ion-row responsive-sm>
+			<ion-col>
+				<button (click)="login(usercreds)" type="submit" primary block>Login</button>
+			</ion-col>
+			<ion-col>
+				<button (click)="gotoSignUp()" light block>Signup</button>
+			</ion-col>
+		</ion-row>
+	</ion-list>
+
+</ion-content>

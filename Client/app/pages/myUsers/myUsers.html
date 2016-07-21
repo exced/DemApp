@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My users</ion-title>
+    <ion-buttons end>
+      <button royal (click)="gotoAddUser()">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content user-list">
+
+  <ion-searchbar [(ngModel)]="query"></ion-searchbar>
+
+  <ion-list>
+
+    <ion-card *ngFor="#user of (users | myUsersFilter:query)" class="user">
+
+      <ion-item-sliding #slidingItem>
+        <button ion-item (click)="gotoUserDetail(user)">
+          <div item-left>
+        <!-- 
+          <ion-avatar>
+          <img [src]="user.profilePic">
+          </ion-avatar>
+          !-->
+          {{user.firstname}}  {{user.lastname}}
+        </div>
+        <!--
+        <div item-right>
+          
+        </div>
+        !-->
+      </button>
+
+      <ion-item-options>
+        <button danger (click)="deleteUser(slidingItem, user)">
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+
+</ion-list>
+
+</ion-content>
+
+

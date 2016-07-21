@@ -1,0 +1,38 @@
+<ion-header>
+	<ion-navbar>
+		<button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>My account</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content user-list">
+
+	<ion-card class="user">
+
+		<ion-card-content class="outer-content">
+
+			<ion-list>
+				<button ion-item *ngFor="let detail of details" (click)="gotoUpdateDetail(detail)">
+					<h3 item-left>{{detail.name}}</h3>
+					<div item-right>{{detail.value}}</div>
+				</button>
+			</ion-list>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-row responsive-sm>
+		<ion-col>
+			<button danger (click)="logout()" primary block>
+				<ion-icon name='close'></ion-icon>
+				Logout
+			</button>
+		</ion-col>
+	</ion-row>
+
+
+
+</ion-content>
+

@@ -1,0 +1,51 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Sign Up
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="signup">
+	<ion-list>
+
+		<ion-item>
+			<ion-label floating>Username</ion-label>
+			<ion-input [(ngModel)] = "newcreds.name" type="text"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.name" danger padding-left>
+			Name is required
+		</p>
+
+		<ion-item>
+			<ion-label floating>Firstname</ion-label>
+			<ion-input [(ngModel)] = "newcreds.firstname" type="text"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.password" danger padding-left>
+			Password is required
+		</p>
+
+		<ion-item>
+			<ion-label floating>Lastname</ion-label>
+			<ion-input [(ngModel)] = "newcreds.lastname" type="text"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.firstname" danger padding-left>
+			Firstname is required
+		</p>
+
+		<ion-item>
+			<ion-label floating>Password</ion-label>
+			<ion-input [(ngModel)] = "newcreds.password" type="password"></ion-input>
+		</ion-item>
+		<p [hidden]="valid.lastname" danger padding-left>
+			Lastname is required
+		</p>
+
+		<ion-row responsive-sm>
+			<ion-col>
+				<button (click)="register(newcreds)" type="submit" primary block>Register</button>
+			</ion-col>
+		</ion-row>
+		
+	</ion-list>
+</ion-content>
