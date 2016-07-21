@@ -8,27 +8,44 @@
 </ion-header>
 
 <ion-content>
+
 	<ion-list>
+
+		<h3 [hidden]="valid.register" danger>
+			Failed to register user
+		</h3>
 
 		<ion-item>
 			<ion-label floating>username</ion-label>
 			<ion-input [(ngModel)] = "newUser.name" type="text"></ion-input>
 		</ion-item>
+		<p [hidden]="valid.name" danger padding-left>
+			Name is required
+		</p>
 
 		<ion-item>
 			<ion-label floating>firstname</ion-label>
 			<ion-input [(ngModel)] = "newUser.firstname" type="text"></ion-input>
 		</ion-item>
+		<p [hidden]="valid.password" danger padding-left>
+			Password is required
+		</p>
 
 		<ion-item>
 			<ion-label floating>lastname</ion-label>
 			<ion-input [(ngModel)] = "newUser.lastname" type="text"></ion-input>
 		</ion-item>
+		<p [hidden]="valid.firstname" danger padding-left>
+			Firstname is required
+		</p>
 
 		<ion-item>
 			<ion-label floating>password</ion-label>
 			<ion-input [(ngModel)] = "newUser.password" type="password"></ion-input>
 		</ion-item>
+		<p [hidden]="valid.lastname" danger padding-left>
+			Lastname is required
+		</p>
 		
 	</ion-list>
 	<button (click)="registerUser(newUser)">Register</button>

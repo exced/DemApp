@@ -23,7 +23,8 @@ export class SignUp {
 			name: true,
 			password: true,
 			firstname: true,
-			lastname: true
+			lastname: true,
+			signup: true
 		}
 	}
 
@@ -34,7 +35,7 @@ export class SignUp {
 		this.valid.lastname = (user.lastname !== '');
 
 		if ((user.name != '') && (user.password != '') && (user.firstname != '') && (user.lastname != '')){
-			this.authService.createUser(user).then(data => {
+			this.authService.registerUser(user).then(data => {
 				if(data.success) {
 					if(data.user.authority === 'user'){
 						this.nav.setRoot(Tabs, {
@@ -42,14 +43,7 @@ export class SignUp {
 						});					
 					}
 				}
-				else {
-					var alert = Alert.create({
-						title: 'failed',
-						subTitle: 'failed to sign up',
-						buttons: ['ok']
-					});
-					this.nav.present(alert);
-				}
+				this.valid.signup = false;
 			});
 		}
 	}

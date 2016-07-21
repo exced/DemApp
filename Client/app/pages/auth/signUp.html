@@ -7,7 +7,12 @@
 </ion-header>
 
 <ion-content class="signup">
+
 	<ion-list>
+
+		<h3 [hidden]="valid.signup" danger>
+			Failed to sign up
+		</h3>
 
 		<ion-item>
 			<ion-label floating>Username</ion-label>

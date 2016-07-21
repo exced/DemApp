@@ -8,6 +8,7 @@ var router = express.Router();
 router.post('/authenticate', user.onAuthenticate);
 
 /* Create */
+router.post('/register', user.onUserRegister);
 router.post('/', user.onUserCreate);
 router.post('/:username/draws', draw.onDrawCreate);
 

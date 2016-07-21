@@ -22,7 +22,8 @@ export class SignIn {
 		}
 		this.valid = {
 			name: true,
-			password: true
+			password: true,
+			signin: true
 		}
 	}
 
@@ -45,12 +46,7 @@ export class SignIn {
 					}
 				}
 				else {
-					var alert = Alert.create({
-						title: 'failed',
-						subTitle: 'failed to sign up',
-						buttons: ['ok']
-					});
-					this.nav.present(alert);
+					this.valid.signin = false;
 				}
 			});
 		}

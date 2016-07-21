@@ -11,6 +11,7 @@ export class AddUser {
 
 	user;
 	newUser;
+	valid;
 	authority:string="user";
 
 	constructor(public platform: Platform, public nav: NavController, private navParams: NavParams, private authService : AuthService) {
@@ -21,20 +22,28 @@ export class AddUser {
 			firstname: '',
 			lastname: ''
 		}
+		this.valid = {
+			name: true,
+			password: true,
+			firstname: true,
+			lastname: true,
+			register: true
+		}
 	}
 
 	registerUser(user) {
+		this.valid.name = (user.name != '');
+		this.valid.password = (user.password !== '');
+		this.valid.firstname = (user.firstname != '');
+		this.valid.lastname = (user.lastname !== '');
+
+
 		this.authService.createUser(user).then((data) => {
 			if(data.success) {
 				this.nav.pop();
 			}
 			else {
-				var alert = Alert.create({
-					title: 'failed',
-					subTitle: 'failed to register user',
-					buttons: ['ok']
-				});
-				this.nav.present(alert);
+				this.valid.register = false;
 			}
 		});
 	}

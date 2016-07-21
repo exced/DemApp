@@ -7,6 +7,11 @@
 <ion-content padding>
 
 	<ion-list>
+
+		<h3 [hidden]="valid.signin" danger>
+			Failed to sign in
+		</h3>
+		
 		<ion-item>
 			<ion-label floating>Username</ion-label>
 			<ion-input [(ngModel)] = "usercreds.name" type="text"></ion-input>

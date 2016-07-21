@@ -83,6 +83,9 @@ export class AuthService {
                     }
                     else
                         resolve(false);
+                },
+                err => {
+                    resolve(false);
                 });
             });
         });
@@ -94,6 +97,37 @@ export class AuthService {
     }
 
     /* ---------------create--------------- */
+    registerUser(user) {
+        var creds = "name=" + user.name + "&password=" + user.password + "&firstname=" + user.firstname + "&lastname=" + user.lastname;
+
+        if (this.userCreate){
+            return Promise.resolve(this.userCreate);
+        }
+
+        return new Promise(resolve => {
+            this.loadHeaders().then((headers) => {
+                this.http.post('http://localhost:3000/register', creds, {headers: headers}).subscribe(data => {
+                    if(data.json().success){
+                        this.storage.set(this.HAS_LOGGED_IN, true);
+                        this.storeUser(data.json().user);
+                        this.storeUserCredentials(data.json().token);
+                        this.events.publish('user:event', {
+                            user: data.json().user
+                        });
+                        resolve(data.json());
+                    }
+                    else
+                        resolve(false);
+                },
+                err => {
+                    resolve(false);
+                });
+            });
+        });
+    }
+
+
+
     createUser(user) {
         var creds = "name=" + user.name + "&password=" + user.password + "&firstname=" + user.firstname + "&lastname=" + user.lastname;
 
@@ -106,10 +140,6 @@ export class AuthService {
                 this.http.post('http://localhost:3000/', creds, {headers: headers}).subscribe(data => {
                     if(data.json().success){
                         this.storage.set(this.HAS_LOGGED_IN, true);
-                        /* if not authenticated */
-                        this.hasLoggedIn().then((hasLoggedIn) => {
-                            if (!hasLoggedIn) this.storeUser(data.json().user);
-                        });
                         this.events.publish('user:event', {
                             user: data.json().user
                         });
@@ -118,6 +148,9 @@ export class AuthService {
                     else
                         resolve(false);
                 });
+            },
+            err => {
+                resolve(false);
             });
         });
     }      
@@ -181,6 +214,9 @@ export class AuthService {
                     }
                     else
                         resolve(false);
+                },
+                err => {
+                    resolve(false);
                 });
             });
         });

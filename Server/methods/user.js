@@ -15,7 +15,7 @@ var functions = {
             if (err) throw err;
 
             if(!user) {
-                res.status(403).send({success: false, msg: 'Authentication failed, User not found'});
+                res.status(403).send({success: false, msg: JSON.stringify(user)});
             }
 
             else {
@@ -34,6 +34,36 @@ var functions = {
 
     /* --------------------create-------------------- */
 
+    onUserRegister: function(req, res){
+
+        if((!req.body.name) || (!req.body.password) || (!req.body.firstname) || (!req.body.lastname)){
+            res.json({success: false, msg: 'Enter all values'});
+        }
+        else {       
+
+            /* not authenticated */
+            var newUser = User({
+                name: req.body.name,
+                password: req.body.password,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                authority: 'user'
+            });
+
+            /* save */
+            newUser.save(function(err, newUser){
+                if (err) throw err;
+                if (err){
+                    res.json({success:false, msg:'Failed to save'})
+                }
+                else {
+                    var token = jwt.encode(newUser, config.secret);
+                    res.json({success:true, token: token, user:newUser});
+                }
+            }) 
+        }
+    },
+
     onUserCreate: function(req, res){
 
         var newUser = User();
@@ -42,7 +72,6 @@ var functions = {
             res.json({success: false, msg: 'Enter all values'});
         }
         else {       
-
 
             /* authenticated */
             if(req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
@@ -73,31 +102,20 @@ var functions = {
                         user: decodedtoken._id
                     });                 
                 }
+                /* save */
+                newUser.save(function(err, newUser){
+                    if (err) throw err;
+                    if (err){
+                        res.json({success:false, msg:'Failed to save'})
+                    }
+                    else {
+                        res.json({success:true, user:newUser});
+                    }
+                }) 
             }
-            else {    
-
-                /* not authenticated */
-                newUser = User({
-                    name: req.body.name,
-                    password: req.body.password,
-                    firstname: req.body.firstname,
-                    lastname: req.body.lastname,
-                    authority: 'user'
-                });
-            }
-
-            /* save */
-            newUser.save(function(err, newUser){
-                if (err) throw err;
-                if (err){
-                    res.json({success:false, msg:'Failed to save'})
-                }
-                else {
-                    res.json({success:true, user:newUser});
-                }
-            }) 
         }
     },
+
 
     /* --------------------get-------------------- */
 
