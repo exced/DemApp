@@ -30,13 +30,14 @@ $ sudo apt-get install npm
 ## Install Server Side
 
 $ cd DemApp/Server
+
 $ sudo npm install
 
 Run the server :
 $ node server.js
 
 
-## Install Client
+## Install Client Side
 
 ### Install Cordova
 
