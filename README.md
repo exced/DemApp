@@ -30,6 +30,7 @@ $ sudo apt-get install npm
 ## Install Server Side
 
 $ cd DemApp/Server
+
 $ sudo npm install
 
 Run the server :
@@ -42,7 +43,7 @@ $ node server.js
 
 $ sudo npm install -g cordova
 
-### Install Ionic
+### Install Ionic Side
 
 $ sudo npm install -g ionic@beta
 
