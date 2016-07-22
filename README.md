@@ -37,13 +37,13 @@ Run the server :
 $ node server.js
 
 
-## Install Client
+## Install Client Side
 
 ### Install Cordova
 
 $ sudo npm install -g cordova
 
-### Install Ionic Side
+### Install Ionic
 
 $ sudo npm install -g ionic@beta
 
