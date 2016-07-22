@@ -43,7 +43,9 @@ export class SignUp {
 						});					
 					}
 				}
-				this.valid.signup = false;
+				else {
+					this.valid.signup = false;
+				}
 			});
 		}
 	}

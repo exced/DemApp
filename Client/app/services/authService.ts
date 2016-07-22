@@ -111,7 +111,7 @@ export class AuthService {
                         this.storage.set(this.HAS_LOGGED_IN, true);
                         this.storeUser(data.json().user);
                         this.storeUserCredentials(data.json().token);
-                        this.events.publish('user:event', {
+                        this.events.publish('user:login', {
                             user: data.json().user
                         });
                         resolve(data.json());

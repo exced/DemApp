@@ -28,7 +28,7 @@ mongoose.connection.on('open', function(){
 
 function onError(err){
 	console.log(err);
-	return 1;
+	process.exit(1);
 }
 
 

@@ -10,7 +10,8 @@ import { MyUsersFilterPipe } from './myUsersFilterPipe';
   pipes: [MyUsersFilterPipe]
 })
 export class MyUsers {
-
+  /* logged in user */
+  user;
   users;
   query: string = "";
   msg: any;
@@ -30,6 +31,10 @@ export class MyUsers {
     this.authService.getUsers().then((data) => {
       this.users = data.users;
     });
+  }
+
+  setFilter(query){
+    this.query = query;
   }
 
   gotoUserDetail(user) {

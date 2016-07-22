@@ -24,7 +24,7 @@ export class MyAccount {
         this.details = [];
         /* details */
         this.authService.loadUser().then((user) => {
-            this.detailsName = ['firstname', 'lastname', 'manager', 'password'];
+            this.detailsName = ['firstname', 'lastname', 'password'];
             for(var i=0; i < this.detailsName.length-1; i++){
                 this.details.push({name:  this.detailsName[i], value:user[this.detailsName[i]]});
             }

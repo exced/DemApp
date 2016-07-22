@@ -35,11 +35,12 @@ export class UserDetail {
   initialize(){
 
     /* details */
-    this.detailsName = ['firstname', 'lastname', 'manager', 'createdAt'];
+    this.detailsName = ['firstname', 'lastname', 'user', 'password', 'createdAt'];
 
-    for(var i=0; i < this.detailsName.length-1; i++){
+    for(var i=0; i < this.detailsName.length-2; i++){
       this.details.push({name: this.detailsName[i], value:this.user[this.detailsName[i]]});
     }
+    this.details.push({name: 'password', value: '*****'});
     var d = this.user['createdAt'];
     var date = d.split("T", 1);
     this.details.push({name: 'createdAt', value: date});
@@ -106,11 +107,13 @@ export class UserDetail {
   	}
 
   	gotoUpdateDetail(detail){
-  		this.nav.push(UpdateUser, {
-  			detail: detail,
-  			user: this.user
-  		});
-  	}
+      if(detail.name !== 'createdAt'){
+        this.nav.push(UpdateUser, {
+          detail: detail,
+          user: this.user
+        });
+      }
+    }
 
     getDraws(user){
       this.nav.push(Draws, {

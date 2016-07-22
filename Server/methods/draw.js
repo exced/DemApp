@@ -66,7 +66,9 @@ var functions = {
                 var fs = require("fs");
 
                 /* create directory */
-                fs.mkdir('./img/' + decodedtoken.name);
+                fs.mkdir('./img/' + decodedtoken.name, function(error) {
+                    console.log(error);
+                });
 
                 /* C++ call cmd */
                 var exec = require('child_process').exec;
@@ -84,7 +86,9 @@ var functions = {
                     /* write image */
                     req.body.img = req.body.img.replace(/^data:image\/\w+;base64,/, "");
                     req.body.img = req.body.img.replace(/ /g, '+');
-                    fs.writeFile('./img/' + newDraw.image, req.body.img, 'base64');
+                    fs.writeFile('./img/' + newDraw.image, req.body.img, 'base64', function(error) {
+                        console.log(error);
+                    });
 
                     /* save */
                     newDraw.save(function(err, newDraw){
@@ -99,10 +103,10 @@ var functions = {
                 });
             }
             else{
-             return res.status(403).send({success: false, msg: 'not guest'});
-         }
-     }
-     else {
+               return res.status(403).send({success: false, msg: 'not guest'});
+           }
+       }
+       else {
         return res.json({success:false, msg: 'No header'});
     }
 }

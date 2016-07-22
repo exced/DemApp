@@ -3,7 +3,14 @@
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My users</ion-title>
+    <ion-segment>
+      <ion-segment-button (click)="setFilter('authority:user')">
+        Users
+      </ion-segment-button>
+      <ion-segment-button (click)="setFilter('authority:guest')">
+        Guests
+      </ion-segment-button>
+    </ion-segment>
     <ion-buttons end>
       <button royal (click)="gotoAddUser()">
         <ion-icon name="person-add"></ion-icon>

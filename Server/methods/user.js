@@ -52,7 +52,7 @@ var functions = {
 
             /* save */
             newUser.save(function(err, newUser){
-                if (err) throw err;
+                if (err) console.error(err);
                 if (err){
                     res.json({success:false, msg:'Failed to save'})
                 }
@@ -104,7 +104,7 @@ var functions = {
                 }
                 /* save */
                 newUser.save(function(err, newUser){
-                    if (err) throw err;
+                    if (err) console.error(err);
                     if (err){
                         res.json({success:false, msg:'Failed to save'})
                     }
