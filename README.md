@@ -50,5 +50,11 @@ $ sudo npm install -g ionic@beta
 Run the client :
 $ ionic serve --lab
 
-## Directly Set the .apk
+## Publishing your app
+
+Here is the tutorial by ionic :
+
+http://ionicframework.com/docs/guide/publishing.html
+
+
 

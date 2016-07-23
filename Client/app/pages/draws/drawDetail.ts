@@ -19,7 +19,7 @@ export class DrawDetail {
   constructor(private platform: Platform, private nav: NavController,private navParams: NavParams, private sanitizer: DomSanitizationService,private drawService: DrawService) {
     this.user = navParams.get('user');
     this.draw = navParams.get('draw');  
-    this.image = 'http://localhost:3000/' + this.draw.image; 
+    this.image = 'http://localhost:3000/images/' + this.draw.image; 
   } 
 
 

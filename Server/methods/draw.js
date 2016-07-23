@@ -1,5 +1,5 @@
-var Draw = require('../model/draw');
-var User = require('../model/user');
+var Draw = require('../models/draw');
+var User = require('../models/user');
 var config = require('../config/database');
 var jwt = require('jwt-simple');
 
@@ -66,8 +66,8 @@ var functions = {
                 var fs = require("fs");
 
                 /* create directory */
-                fs.mkdir('./img/' + decodedtoken.name, function(error) {
-                    console.log(error);
+                fs.mkdir('./public/images/' + decodedtoken.name, function(error) {
+                    console.error(error);
                 });
 
                 /* C++ call cmd */
@@ -86,8 +86,8 @@ var functions = {
                     /* write image */
                     req.body.img = req.body.img.replace(/^data:image\/\w+;base64,/, "");
                     req.body.img = req.body.img.replace(/ /g, '+');
-                    fs.writeFile('./img/' + newDraw.image, req.body.img, 'base64', function(error) {
-                        console.log(error);
+                    fs.writeFile('./public/images/' + newDraw.image, req.body.img, 'base64', function(error) {
+                        console.error(error);
                     });
 
                     /* save */
