@@ -2,6 +2,7 @@ var Draw = require('../models/draw');
 var User = require('../models/user');
 var config = require('../config/database');
 var jwt = require('jwt-simple');
+var mongoose = require('mongoose');
 
 var functions = {
 
@@ -67,29 +68,30 @@ var functions = {
 
                 /* create directory */
                 fs.mkdir('./public/images/' + decodedtoken.name, function(error) {
-                    console.error(error);
+                    //console.error(error);
                 });
 
-                /* create model */
-                newDraw = Draw({
-                    user: decodedtoken._id
-                });
-                newDraw.image = decodedtoken.name + '/' + newDraw._id + '.png'; // use ID as name
+                /* generate unique id */
+                var imgId = decodedtoken.name + '/' + mongoose.Types.ObjectId() + '.png';
 
                 /* C++ call cmd */
                 var exec = require('child_process').exec;
-                var cmd = './cpp/score' + newDraw.image;
+                var cmd = './cpp/score ' + imgId;
 
                 exec(cmd, function(error, stdout, stderr) { // command output is in stdout
 
-                    /* store the result */
-                    newDraw.score = stdout;
+                    /* create model */
+                    var newDraw = Draw({
+                        score: stdout,
+                        user: decodedtoken._id,
+                        image: imgId
+                    });
 
                     /* write image */
                     req.body.img = req.body.img.replace(/^data:image\/\w+;base64,/, "");
                     req.body.img = req.body.img.replace(/ /g, '+');
                     fs.writeFile('./public/images/' + newDraw.image, req.body.img, 'base64', function(error) {
-                        console.error(error);
+                        //console.error(error);
                     });
 
                     /* save */
