@@ -36,7 +36,7 @@ $ cd DemApp/Server
 $ sudo npm install
 
 Run the server :
-$ node server.js
+$ ./bin/www
 
 
 ## Install Client Side
