@@ -5,6 +5,7 @@ import { SignIn } from './pages/auth/signIn';
 import { Drawing } from './pages/drawing/drawing';
 import { Tabs } from './pages/tabs/tabs';
 import { AuthService } from './services/authService';
+import { DrawService } from './services/drawService';
 import { TutorialPage } from './pages/tutorial/tutorial';
 import '../bower_components/Chart.js/dist/Chart.bundle.min.js';
 
@@ -126,4 +127,6 @@ class MyApp {
 // Place the tabs on the bottom for all platforms
 // See the theming docs for the default values:
 // http://ionicframework.com/docs/v2/theming/platform-specific-styles/
-ionicBootstrap(MyApp, [AuthService]);
+ionicBootstrap(MyApp, [AuthService, DrawService], {
+  tabbarPlacement: 'bottom'
+});

@@ -126,7 +126,7 @@ var functions = {
             var token = req.headers.authorization.split(' ')[1];
             var decodedtoken = jwt.decode(token, config.secret);
 
-            var query = {_id: 0};
+            var query;
 
             switch (decodedtoken.authority){
                 case 'admin':
@@ -158,7 +158,7 @@ var functions = {
             var token = req.headers.authorization.split(' ')[1];
             var decodedtoken = jwt.decode(token, config.secret);
 
-            var query = {_id: 0};
+            var query;
 
             switch (decodedtoken.authority){
                 case 'admin':
@@ -198,7 +198,7 @@ var functions = {
             }     
             else {
 
-                var query = {_id: 0};
+                var query;
                 var update = {};
                 update[req.body.detailName] = req.body.detailValue; 
 
@@ -253,7 +253,7 @@ var functions = {
             var token = req.headers.authorization.split(' ')[1];
             var decodedtoken = jwt.decode(token, config.secret);
 
-            var query = {_id: 0};
+            var query;
 
             switch (decodedtoken.authority){
                 case 'admin':

@@ -13,7 +13,7 @@ var functions = {
             var token = req.headers.authorization.split(' ')[1];
             var decodedtoken = jwt.decode(token, config.secret);
 
-            var query = {_id: 0};
+            var query;
 
             switch (decodedtoken.authority){
                 case 'admin':
@@ -72,7 +72,7 @@ var functions = {
 
                 /* C++ call cmd */
                 var exec = require('child_process').exec;
-                var cmd = './cpp/hello';
+                var cmd = './cpp/score';
 
                 exec(cmd, function(error, stdout, stderr) { // command output is in stdout
 

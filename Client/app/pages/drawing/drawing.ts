@@ -35,9 +35,6 @@ export class Drawing {
 		/* draw clack */
 		this.drawClock(this.canvas, this.context, this.toolbar);
 
-		/* draw circle */
-		this.drawCircle(this.canvas, this.context);
-
 		/* mouse position */
 		var mouse = { x: 0, y: 0 };
 		var last_mouse = { x: 0, y: 0 };
@@ -74,18 +71,6 @@ export class Drawing {
 			context.closePath();
 			context.stroke();
 		};
-	}
-
-	drawCircle(canvas, context){
-		/* draw circle */
-		var centerX = canvas.width / 2;
-		var centerY = canvas.height / 2;
-		var radius = 100;
-		context.beginPath();
-		context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-		context.lineWidth = 4;
-		context.strokeStyle = 'black';
-		context.stroke();
 	}
 
 	drawClock(canvas, context, toolbar){
@@ -156,6 +141,5 @@ export class Drawing {
 		/* reset */
 		this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
 		this.drawClock(this.canvas, this.context, this.toolbar);
-		this.drawCircle(this.canvas, this.context);
 	}
 }
