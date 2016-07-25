@@ -36,7 +36,7 @@ $ cd DemApp/Server
 $ sudo npm install
 
 Run the server :
-$ node server.js
+$ ./bin/www
 
 
 ## Install Client Side
@@ -51,6 +51,11 @@ $ sudo npm install -g ionic@beta
 
 Run the client :
 $ ionic serve --lab
+
+## Production mode
+$ make address
+
+It will prompt you to enter address and replace all 'localhost:3000' lines in Client Side by your server address
 
 ## Publishing your app
 
