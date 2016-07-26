@@ -56,7 +56,6 @@ class MyApp {
 
   // Dependency injections
   constructor(private platform: Platform, private events: Events, private menu: MenuController, private authService:AuthService) {
-    this.authService.destroyUserCredentials();
     this.initializeApp();
   }
 

@@ -141,7 +141,6 @@ export class AuthService {
                     if(data.json().success){
                         this.storage.set(this.HAS_LOGGED_IN, true);
                         this.events.publish('user:event', {
-                            user: data.json().user
                         });
                         resolve(data.json());
                     }

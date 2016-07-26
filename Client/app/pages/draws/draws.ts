@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, Events, NavParams } from 'ionic-angular';
+import { NavController, Events, ItemSliding, Alert, NavParams } from 'ionic-angular';
 import { DrawService } from '../../services/drawService';
 import { DrawDetail } from './drawDetail';
 
@@ -26,6 +26,32 @@ export class Draws {
     });
   }
 
+  gotoDrawDetail(draw) {
+    this.nav.push(DrawDetail, {
+      draw: draw,
+      user: this.user
+    });
+    this.loadDraws();
+  }
+
+  deleteDraw(slidingItem: ItemSliding, draw) {
+    this.drawService.deleteDraw(draw, this.user).then((data) => {
+      if (!data) {  
+        var alert = Alert.create({
+          title: 'failed',
+          subTitle: 'failed to delete',
+          buttons: [{
+            text:'ok',
+            handler: () => {
+              slidingItem.close();
+            }
+          }]
+        });  
+      }
+      this.nav.present(alert);
+    });
+  }
+
   loadDraws(){
     this.drawService.getDraws(this.user).then((data) => {
 
@@ -34,13 +60,6 @@ export class Draws {
       }
       this.draws = data.draws;
     });
-  }
-
-  gotoDrawDetail(draw) {
-    this.nav.push(DrawDetail, {
-      draw: draw
-    });
-    this.loadDraws();
   }
 
 }

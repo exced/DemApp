@@ -11,19 +11,31 @@
 
 <ion-content class="outer-content draw-list">
 
-  <ion-card *ngFor="let draw of draws" class="draw">
+  <ion-list>
 
-    <button ion-item (click)="gotoDrawDetail(draw)">
-      <div item-left>
-          {{draw.createdAt}}
-        </div>
-        <div item-right>
-          {{draw.score}}
-        </div>
-      </button>
+    <ion-card *ngFor="let draw of draws">
+
+      <ion-item-sliding #slidingItem>
+        <button ion-item (click)="gotoDrawDetail(draw)">
+          <div item-left>
+            {{draw.createdAt}}
+          </div>
+          <div item-right>
+            {{draw.score}}
+          </div>
+        </button>
+
+        <ion-item-options>
+          <button danger (click)="deleteDraw(slidingItem, draw)">
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
 
     </ion-card>
 
-  </ion-content>
+  </ion-list>
+
+</ion-content>
 
 

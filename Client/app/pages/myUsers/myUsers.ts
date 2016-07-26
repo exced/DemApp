@@ -18,10 +18,10 @@ export class MyUsers {
 
   constructor(private nav: NavController, private navParams: NavParams, private authService: AuthService, private events: Events) {
     this.loadUsers();
-    this.listenToUserEvents();
+    this.listenToEvents();
   }
 
-  listenToUserEvents() {
+  listenToEvents() {
     this.events.subscribe('user:event', (data) => {
       this.loadUsers();
     });

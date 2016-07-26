@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavParams} from 'ionic-angular';
 import {MyUsers} from '../myUsers/myUsers';
-import {Settings} from '../settings/settings';
+import {Home} from '../home/home';
 import {MyAccount} from '../myAccount/myAccount';
 
 
@@ -11,7 +11,7 @@ import {MyAccount} from '../myAccount/myAccount';
 export class Tabs {
   // set the root pages for each tab
   tab1Root: any = MyUsers;
-  tab2Root: any = Settings;
+  tab2Root: any = Home;
   tab3Root: any = MyAccount;
   mySelectedIndex: number;
 

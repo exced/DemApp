@@ -52,4 +52,23 @@ export class DrawService {
 		});   
 	}
 
+	/* ---------------delete--------------- */
+
+	deleteDraw(draw,user){
+
+		return new Promise(resolve => {
+			this.authService.loadHeaders().then((headers) => {
+				this.http.delete('http://localhost:3000/' + user.name + '/draws/' + draw.image , {headers: headers}).subscribe(data => {
+					if(data.json().success){
+						this.events.publish('draw:event', {
+						});
+						resolve(true);
+					}
+					else
+						resolve(false);
+				});
+			});
+		});
+	}
+
 }
