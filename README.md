@@ -59,7 +59,7 @@ It will prompt you to enter address and replace all 'localhost:3000' lines in Cl
 
 Connection to MongoDB and secret code of the encrypt function are stored in /Server/config/database.js.
 
-It is highly recommended to use a random key as secret of your app. You can use v4.uuid function given by NodeJS to generate a such key.
+It is highly recommended to use a random key as secret of your app. You can use v4.uuid function given by NodeJS to generate such a key.
 
 ## Publishing your app
 
