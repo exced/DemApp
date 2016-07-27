@@ -57,6 +57,10 @@ $ make address
 
 It will prompt you to enter address and replace all 'localhost:3000' lines in Client Side by your server address
 
+Connection to MongoDB and secret code of the encrypt function are stored in /Server/config/database.js.
+
+It is highly recommended to use a random key as secret of your app. You can use v4.uuid function given by NodeJS to generate a such key.
+
 ## Publishing your app
 
 Here is the tutorial by ionic :
