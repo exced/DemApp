@@ -8,52 +8,65 @@ Each patient is managed by a nurse who can see his data in order to react fastly
 # Install on Debian and Ubuntu based Linux distribution
 
 ## Install NodeJS
+```bash
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
-$ sudo apt-get install -y nodejs
-
-$ sudo apt-get install -y build-essential
+sudo apt-get install -y build-essential
+```
 
 Check the install :
-$ node -v
+```bash
+node -v
+```
 
 ## Install MongoDB
-
-$ sudo apt-get install mongodb-server mongodb-clients
+```bash
+sudo apt-get install mongodb-server mongodb-clients
+```
 
 Check the install :
-$ mongo
+```bash
+mongo
+```
 
 ## Install NPM (Node Package Manager)
-
-$ sudo apt-get install npm
-
+```bash
+sudo apt-get install npm
+```
 ## Install Server Side
+```bash
+cd DemApp/Server
 
-$ cd DemApp/Server
-
-$ sudo npm install
+sudo npm install
+```
 
 Run the server :
-$ ./bin/www
-
+```bash
+./bin/www
+```
 
 ## Install Client Side
 
 ### Install Cordova
-
-$ sudo npm install -g cordova
-
+```bash
+sudo npm install -g cordova
+```
 ### Install Ionic
-
-$ sudo npm install -g ionic@beta
+```bash
+sudo npm install -g ionic@beta
+```
 
 Run the client :
-$ ionic serve --lab
+```bash
+ionic serve --lab
+```
 
 ## Production mode
-$ make address
+```bash
+make address
+```
 
 It will prompt you to enter address and replace all 'localhost:3000' lines in Client Side by your server address
 
