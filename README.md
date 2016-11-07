@@ -5,6 +5,10 @@ The goal is to build an user-friendly app to let patient do clock drawing test.
 
 Each patient is managed by a nurse who can see his data in order to react fastly.
 
+# ES6 and Typescript
+ES6 and Typescript are perfect now to write webapps. Consider changes to make NodeJS being compatible with TS
+and add Webpack to write your ES6 app.
+
 
 # Ionic 2 beta
 This app was built with ionic2 beta. Now lot of changes have been made.
