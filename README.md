@@ -5,6 +5,11 @@ The goal is to build an user-friendly app to let patient do clock drawing test.
 
 Each patient is managed by a nurse who can see his data in order to react fastly.
 
+
+# Ionic 2 beta
+This app was built with ionic2 beta. Now lot of changes have been made.
+
+
 # Install on Debian and Ubuntu based Linux distribution
 
 ## Install NodeJS
